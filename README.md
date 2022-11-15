@@ -34,7 +34,7 @@ Configuration file is located in kubernetes.json
 
 ### Install using the script
 - Clone repo
-- Run build script `build.sh`
+- Run build script `bash build.sh`
 
 ### Validation
 -
