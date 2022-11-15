@@ -26,9 +26,9 @@ Configuration file is located in kubernetes.json
 - `agentPoolProfiles.vmSize` - vm size of k8s worker nodes (same remark about the size)
 
 ## Prerequisites  
-- aks-engine intalled
+- [aks-engine](https://github.com/Azure/aks-engine) intalled
 - Azure subscription
-- kubectl installed
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) installed
 
 ## Installation
 
@@ -36,8 +36,11 @@ Configuration file is located in kubernetes.json
 - Clone repo
 - Run build script `bash build.sh`
 
-### Validation
--
+### Validation that all is in place
+- Run command `kubectl get pods -A` - you should see pod for each service (number of pods depend on the replicas property in deployment yml)
+ - All pods should be in running state
+ - You should be able to access crypto-currency app at: `http://<nginx_ip>/crypto`  
+  - You should be able to access basic-web-app app at: `http://<nginx_ip>/webapp`  
 
 ## Upgrade service version
 - When a service release new version, a new image will be published to ACR
