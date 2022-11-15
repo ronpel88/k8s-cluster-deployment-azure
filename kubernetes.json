@@ -1,0 +1,42 @@
+{
+    "apiVersion": "vlabs",
+    "properties": {
+      "orchestratorProfile": { 
+        "orchestratorRelease": "1.23", 
+        "orchestratorVersion": "1.23.1",
+        "kubernetesConfig": { 
+          "networkPolicy": "calico",
+          "networkPlugin": "azure",
+          "apiServerConfig": { 
+            "--authorization-mode": "Node,RBAC" 
+          } 
+        } 
+      },
+      "masterProfile": {
+        "count": 1,
+        "dnsPrefix": "assignment",
+        "vmSize": "Standard_D2ads_v5",
+        "distro": "ubuntu-18.04"
+      },
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool1",
+          "count": 1,
+          "vmSize": "Standard_D2ads_v5",
+          "distro": "ubuntu-18.04"
+        }
+      ],
+      "linuxProfile": {
+        "runUnattendedUpgradesOnBootstrap": false,
+        "adminUsername": "azureuser",
+        "ssh": {
+          "publicKeys": [
+            {
+              "keyData": ""
+            }
+          ]
+        }
+      }
+    }
+  }
+  

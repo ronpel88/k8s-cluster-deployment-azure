@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-currency
+  labels:
+    app: crypto-currency
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crypto-currency
+  template:
+    metadata:
+      name: crypto-currency
+      labels:
+        app: crypto-currency
+    spec:
+      containers:
+      - name: crypto-currency
+        image: msassigment.azurecr.io/crypto-currency:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: crypto-currency
+        env:
+          - name: TEST
+            value: ron
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: crypto-currency
+spec:
+  selector:
+    app: crypto-currency
+  ports:
+    - port: 80
+      name: http
+      targetPort: crypto-currency
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: crypto-currency
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /crypto
+        pathType: Prefix
+        backend:
+          service:
+            name: crypto-currency
+            port:
+              number: 80
+      
+
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: crypto-currency-network
+#   annotations: 
+#     nginx.ingress.kubernetes.io/rewrite-target: /nettest
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - http:
+#       paths:
+#       - path: /crypto-network
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: crypto-currency
+#             port:
+#               number: 80
