@@ -22,9 +22,6 @@ spec:
         ports:
         - containerPort: 5000
           name: basic-web-app
-        env:
-          - name: TEST
-            value: ron
 
 ---
 apiVersion: v1
@@ -59,19 +56,20 @@ spec:
             port:
               number: 80
 
-# ---
-# kind: NetworkPolicy
-# apiVersion: networking.k8s.io/v1
-# metadata:
-#   name: basic-web-app-deny-all
-# spec:
-#   podSelector:
-#     matchLabels:
-#       app: basic-web-app
-#   ingress:
-#   - from:
-#       - podSelector:
-#           matchLabels:
-#             app.kubernetes.io/name: ingress-nginx
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: basic-web-app-allow-nginx-only
+spec:
+  podSelector:
+    matchLabels:
+      app: basic-web-app
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: ingress-nginx
+
 
 
