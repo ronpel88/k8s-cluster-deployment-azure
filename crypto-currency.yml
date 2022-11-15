@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: crypto-currency
-        image: msassigment.azurecr.io/crypto-currency:latest
+        image: msassigment.azurecr.io/crypto-currency:v0.0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 5000

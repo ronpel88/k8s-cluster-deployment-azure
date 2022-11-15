@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: basic-web-app
-        image: msassigment.azurecr.io/basic-web-app:latest
+        image: msassigment.azurecr.io/basic-web-app:v0.0.2
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
