@@ -28,9 +28,9 @@ export KUBECONFIG=_output/${resource_group_id}/kubeconfig/kubeconfig.${location}
 
 # deploy nginx ingress controller
 echo "going to deploy nginx ingress controller on k8s"
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml
+kubectl create -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.5.1/deploy/static/provider/cloud/deploy.yaml
 # deploy calico
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/calico.yaml -n kube-system
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.5/manifests/calico.yaml -n kube-system || true
 echo "waiting for nginx to finish installation"
 sleep 30
 
@@ -42,6 +42,7 @@ kubectl apply -f crypto-currency.yml
 echo "going to deploy basic-web-app service on k8s"
 kubectl apply -f basic-web-app.yml
 
+sleep 30 # wait gor pods to start
 nginx_ip=$(kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
 echo "Success!"
