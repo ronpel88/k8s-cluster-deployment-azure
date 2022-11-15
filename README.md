@@ -1,10 +1,10 @@
 # Deploy k8s cluster based on AKS-engine, on Azure cloud
 
 ## Description
-Creation of k8s cluster on azure, using [aks-engine](https://github.com/Azure/aks-engine). 
-Installing 2 services:
-    - [basic-web-app](https://github.com/ronpel88/basic-web-app) service
-    - [crypto-currency](https://github.com/ronpel88/crypto-currency) service
+Creation of k8s cluster on azure, using [aks-engine](https://github.com/Azure/aks-engine).   
+Installing 2 services:  
+    - [basic-web-app](https://github.com/ronpel88/basic-web-app) service  
+    - [crypto-currency](https://github.com/ronpel88/crypto-currency) service  
 
 
 ## How it works 
