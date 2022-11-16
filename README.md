@@ -18,6 +18,13 @@ The build script creates the following infra:
     - [crypto-currency](https://github.com/ronpel88/crypto-currency) service
 - The image for each service is coming from ACR, in a repo that is open for pull image operation 
 
+## Diagram
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/roncloud/image/upload/v1668588269/Screen_Shot_2022-11-16_at_10.43.38.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://res.cloudinary.com/roncloud/image/upload/v1668588269/Screen_Shot_2022-11-16_at_10.43.38.png">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://res.cloudinary.com/roncloud/image/upload/v1668588269/Screen_Shot_2022-11-16_at_10.43.38.png">
+</picture>
+
 
 ## Configuration
 Configuration file is located in kubernetes.json
